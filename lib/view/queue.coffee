@@ -9,7 +9,7 @@ authors :
 class TrackView extends View
 
   @content: ->
-    @li class: 'pl-album', =>
+    @li class: 'inline-block pl-album', =>
       @div
         class: 'pl-album'
         'Hello World!'
@@ -45,7 +45,7 @@ module.exports =
           class: 'panel-heading'
           'Playlist Queue'
         @ul
-          class: 'panel-body'
+          class: 'block'
           style: 'width:100%;'
           outlet: 'list'
 
@@ -58,7 +58,7 @@ module.exports =
       if @state.tracks
         console.log 'Initializing startup tracks.'
         # add all of our tracks
-        @state.tracks.map (track, index) => @addTrack track
+        @state.tracks.map (track, index) => @pushTrack track
       else
         console.log 'No tracks loaded on startup.'
 
@@ -75,14 +75,36 @@ module.exports =
       @detach()
 
     toggle: ->
-      console.log 'QueueView.toggle'
+      console.log @, 'toggle'
       if @hasParent()
         @detach()
       else
         atom.workspaceView.prependToTop @
 
-    addTrack: (track) ->
+    pushTrack: (track) ->
       console.log 'add track : ', track
       trackView = new TrackView track
       console.log 'track view : ', trackView
       @list.append trackView
+
+    ### TODO: popTrack
+    Takes a track off of the front of the queue and returns the track's state.
+    ###
+    popTrack: () ->
+      console.log @, 'popTrack'
+      return
+
+    ### TODO: insertTrack
+    Inserts a track at position `pos` in the queue and returns the `trackId`.
+    ###
+    insertTrack: (track, position) ->
+      console.log @, 'insertTrack'
+      return
+
+    ### TODO: removeTrack
+    Removes a track with the track id, trackId and returns the state of the
+    removed track.
+    ###
+    removeTrack: (trackId) ->
+      console.log @, 'removeTrack'
+      return
