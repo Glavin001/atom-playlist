@@ -4,4 +4,4 @@
 
 'context-menu':
   '.workspace':
-    'Toggle Yeoman background': 'playlist:toggleBackground'
+    'Toggle Queue': 'playlist:toggleQueue'

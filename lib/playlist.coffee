@@ -2,10 +2,37 @@
 # This file is the entry point of your package. It will be loaded once as a
 # singleton.
 #
-# For more information: https://atom.io/docs/latest/creating-a-package#source-code
+# For more information:
+#   https://atom.io/docs/latest/creating-a-package#source-code
 ###
 
 module.exports =
+
+  ###
+  Setup our logging framework. Here we are using winston.
+
+  FIXME: Winston logging is currently not working. 
+  ###
+  setupLogging: ->
+    winston = require 'winston'
+    logger = new (winston.Logger)({
+      transports: [
+        new (winston.transports.Console)()
+      ]
+    })
+    console.log logger
+    logger.info 'Setup Winston logger.'
+
+  initQueueView: ->
+    return
+
+  ###
+  Setup package commands.
+  ###
+  setupCommands: ->
+
+    workspace = atom.workspaceView
+    workspace.command 'playlist:toggleQueue', => @toggleQueue()
 
   ###
   # This required method is called when your package is activated. It is passed
@@ -14,12 +41,12 @@ module.exports =
   # your package is started (like setting up DOM elements or binding events).
   ###
   activate: (state) ->
-    console.log 'activate(state)'
-    console.log state
+    console.log 'activate ', state
 
-    workspace = atom.workspaceView
-    workspace.command 'playlist:toggleBackground', =>
-      @toggleBackground()
+    @setupLogging()
+    @setupCommands()
+    @initQueueView()
+    return
 
   ###
   # This optional method is called when the window is shutting down, allowing
@@ -39,13 +66,8 @@ module.exports =
   deactivate: ->
     console.log 'deactivate()'
 
-
   ###
-  # This custom method toggles the .yeoman class on the appropriate DOM
-  # element.
+  Toggle the queue.
   ###
-  toggleBackground: ->
-    console.log 'toggleBackground()'
-
-    workspace = atom.workspaceView
-    workspace.find('.item-views > .editor > .scroll-view').toggleClass 'yeoman'
+  toggleQueue: ->
+    console.log 'toggleQueue()'

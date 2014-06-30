@@ -6,9 +6,9 @@
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'playlist'
+      'label': 'Playlist'
       'submenu': [
-        { 'label': 'Toggle Yeoman background', 'command': 'playlist:toggleBackground' }
+        { 'label': 'Toggle Queue', 'command': 'playlist:toggleQueue' }
       ]
     ]
   }
