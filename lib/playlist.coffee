@@ -6,15 +6,17 @@
 #   https://atom.io/docs/latest/creating-a-package#source-code
 ###
 
+winston = require 'winston'
+QueueView = require './view/queue'
+
 module.exports =
 
   ###
   Setup our logging framework. Here we are using winston.
 
-  FIXME: Winston logging is currently not working. 
+  FIXME: Winston logging is currently not working.
   ###
   setupLogging: ->
-    winston = require 'winston'
     logger = new (winston.Logger)({
       transports: [
         new (winston.transports.Console)()
@@ -23,7 +25,10 @@ module.exports =
     console.log logger
     logger.info 'Setup Winston logger.'
 
-  initQueueView: ->
+  initQueueView: (state) ->
+    console.log 'initQueueView'
+    @queueView = new QueueView state
+
     return
 
   ###
@@ -45,7 +50,7 @@ module.exports =
 
     @setupLogging()
     @setupCommands()
-    @initQueueView()
+    @initQueueView state
     return
 
   ###
@@ -65,9 +70,11 @@ module.exports =
   ###
   deactivate: ->
     console.log 'deactivate()'
+    @queueView.destroy()
 
   ###
   Toggle the queue.
   ###
   toggleQueue: ->
     console.log 'toggleQueue()'
+    @queueView.toggle()
