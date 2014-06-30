@@ -1,0 +1,30 @@
+{
+  "name": "playlist",
+  "main": "lib/playlist",
+  "version": "0.0.0",
+  "description": "Queue and play music directly from Atom.",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dreid93/atom-playlist.git"
+  },
+  "homepage": "https://github.com/dreid93/atom-playlist",
+  "bugs": {
+    "url": "https://github.com/dreid93/atom-playlist/issues"
+  },
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "scripts": {
+    "test": "grunt"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-coffeelint": "0.0.8",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-lesslint": "~1.0.0",
+    "grunt-apm": "0.0.1"
+  }
+}
