@@ -12,6 +12,32 @@
   background-repeat: no-repeat;
 }
 
-.playlist-queue {
+.pl-queue {
+  height: 183px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+@pl-album-length: 100px;
+
+.pl-queue ul {
+  overflow-x: auto;
+  white-space: nowrap;
   height: 150px;
+  background-color: #ddd;
+  color: green;
+  margin: 0px;
+}
+
+li.pl-album {
+  text: center;
+  margin: 10px;
+  color: black;
+  display: inline-block;
+  width: @pl-album-length;
+}
+
+div.pl-album {
+  height: @pl-album-length;
+  background-color: green;
 }
