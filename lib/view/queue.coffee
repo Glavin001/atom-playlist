@@ -10,10 +10,14 @@ module.exports =
   class QueueView extends View
 
     @content: ->
-      @div class: 'overlay from-top panel', =>
+      @div class: 'pane playlist-queue', =>
         @div
           class: 'panel-heading'
           'Playlist Queue'
+        @div
+          class: 'panel-body padded',
+          outlet: 'body',
+          style: 'width:100%;'
 
     initialize: (state) ->
       console.log 'QueueView.initialize'
@@ -32,7 +36,8 @@ module.exports =
       @detach()
 
     toggle: ->
+      console.log 'QueueView.toggle'
       if @hasParent()
         @detach()
       else
-        atom.workspaceView.append(this)
+        atom.workspaceView.prependToTop @
