@@ -1,6 +1,11 @@
-Package created using [generator-atom-package][npm].
+# Playlist
 
-Find more information concerning Atom package creation [here][atom-doc].
+An [Atom editor]() plugin for queueing and playing music.
+
+## Features
+
+- [ ] Queue music from Sound cloud
+- [ ] Play music from Sound cloud
 
 [npm]: https://www.npmjs.org/package/generator-atom-package
 [atom-doc]: https://atom.io/docs/latest/creating-a-package "Official documentation"
