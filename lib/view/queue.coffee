@@ -28,8 +28,7 @@ module.exports =
 
     initialize: (state) ->
       console.log 'QueueView.initialize'
-      @state=
-        tracks: [1..15]
+      @state = state
       console.log 'state : ', @state
 
       if @state.tracks

@@ -51,7 +51,7 @@ module.exports =
     @setupCommands()
 
     @queueView = new QueueView state
-    @searchView = new SearchView state
+    @searchView = new SearchView state, @queueView
 
     atom.config.observe 'playlist.clientId', {}, (clientId) ->
       console.log 'client id :', clientId

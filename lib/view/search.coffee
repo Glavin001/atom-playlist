@@ -27,8 +27,8 @@ module.exports =
           outlet: 'searchInput'
           keyUp: 'search' # call the search method
           autofocus: true
-        @ol
-          dthclass: 'list-group'
+        @ul
+          class: 'pl-search-list list-group'
           outlet: 'searchResults'
 
     ###
@@ -59,12 +59,13 @@ module.exports =
       #console.log results
       @searchResults.empty()
       for result in results
-        searchResult = new SearchResultView result
+        searchResult = new SearchResultView result, @queue
         @searchResults.append searchResult
 
-    initialize: (state) ->
+    initialize: (state, queue) ->
       console.log 'SearchView.initialize'
       @state = state
+      @queue = queue
 
     ###
     Returns an object that can be retrieved when package is activated

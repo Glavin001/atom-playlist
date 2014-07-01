@@ -13,12 +13,12 @@
 }
 
 .pl-queue {
-  height: 183px;
+  height: 173px;
   overflow-x: auto;
   white-space: nowrap;
 }
 
-@pl-album-length: 110px;
+@pl-album-length: 100px;
 
 .pl-queue ul {
   overflow-x: auto;
@@ -37,8 +37,14 @@ li.pl-album {
 
 div.pl-album {
   height: @pl-album-length;
-  background-color: green;
+  border-style: solid;
+  border-width: 2px;
 }
 
 textarea.pl-search {
+}
+
+.pl-search-list {
+  height: 400px;
+  overflow-y: auto;
 }

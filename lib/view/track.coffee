@@ -9,15 +9,17 @@ authors :
 module.exports =
   class TrackView extends View
 
-    @content: ->
+    @content: (track) ->
       @li class: 'inline-block pl-album', =>
         @div
-          class: 'pl-album'
-          'Hello World!'
+          class: 'pl-album', =>
+            @div
+              class: ''
+              track.title
 
-    initialize: (state) ->
+    initialize: (track) ->
       console.log 'TrackView.initialize'
-      @state = state
+      @track = track
 
     ###
     Returns an object that can be retrieved when package is activated
