@@ -47,7 +47,7 @@ module.exports =
 
     wV = atom.workspaceView
     wV.append(util.format '<link rel="stylesheet" type="text/css" href="%s">',
-      'atom://fontawesome/css/font-awesome.min.css')
+      'atom://components/fontawesome/css/font-awesome.min.css')
 
   ###
   # This required method is called when your package is activated. It is passed
