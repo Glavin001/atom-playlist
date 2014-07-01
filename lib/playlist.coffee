@@ -53,7 +53,7 @@ module.exports =
     @queueView = new QueueView state
     @searchView = new SearchView state
 
-    atom.config.observe 'playlist.clientId', {}, (clientId) =>
+    atom.config.observe 'playlist.clientId', {}, (clientId) ->
       console.log 'client id :', clientId
 
     return

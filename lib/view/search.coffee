@@ -5,6 +5,8 @@ authors :
 ###
 
 {View} = require 'atom'
+http = require 'http'
+util = require 'util'
 
 module.exports =
   class SearchView extends View
@@ -25,17 +27,37 @@ module.exports =
         @div
           class: 'panel-heading'
           'Search for Tracks!'
-        @textarea
+        @input
           type: 'text'
-          class: 'form-control native-key-bindings'
+          class: 'pl-search form-control native-key-bindings'
           placeholder: 'What would you like to listen to?'
           style: 'height: 32px;'
           value: ''
-          outlet: 'rawSearch'
+          outlet: 'searchInput'
+          keyUp: 'search' # call the search method
         @ol class: 'list-group', =>
           @ul
             class: 'event'
             'One'
+
+    ###
+    Query Soundcloud for the supplied query string.
+    ###
+    search: () ->
+      console.log 'SearchView.search'
+      queryString = util.format(
+        "http://api.soundcloud.com/tracks.json?client_id=%s&q=\'%s\'",
+        atom.config.get('playlist.clientId'), @searchInput.val())
+      console.log 'search uri : ', queryString
+
+      # search soundcloud
+      http.get queryString, (resp) ->
+        data = ''
+        resp.on 'data', (chunk) ->
+          #console.log 'chunk :', chunk
+          data += chunk.toString()
+        resp.on 'end', ->
+          console.log 'data :', data
 
     initialize: (state) ->
       console.log 'SearchView.initialize'
