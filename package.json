@@ -20,7 +20,8 @@
     "test": "grunt"
   },
   "dependencies": {
-    "winston": "~0.7.3"
+    "winston": "~0.7.3",
+    "soundcloud-stream": "0.0.2"
   },
   "devDependencies": {
     "grunt": "~0.4.2",

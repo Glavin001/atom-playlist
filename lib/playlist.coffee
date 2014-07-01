@@ -13,7 +13,7 @@ SearchView = require './view/search'
 module.exports =
 
   configDefaults:
-    clientId: '072891b4ca0d6d02c31c2abb82bd3f63'
+    clientId: ''
 
   ###
   Setup our logging framework. Here we are using winston.

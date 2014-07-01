@@ -7,6 +7,7 @@ authors :
 {View} = require 'atom'
 
 util = require 'util'
+stream = require('soundcloud-stream')(atom.config.get 'playlist.clientId')
 
 module.exports =
   class TrackView extends View
@@ -18,22 +19,32 @@ module.exports =
             @div
               class: ''
               track.title
+            @div
+              outlet: 'audioDiv'
 
     initialize: (track) ->
       console.log 'TrackView.initialize'
       @track = track
 
       if track.stream_url
+        ###
         @context = new webkitAudioContext()
-        @audio = new Audio()
         @url = track.stream_url +
-          util.format '?client_id=%s', atom.config.get('playlist.clientId');
+          util.format '?client_id=%s', atom.config.get 'playlist.clientId'
         console.log 'streaming url :', @url
 
-        @audio.src = @url;
-        @source = @context.createMediaElementSource(@audio);
-        @source.connect(@context.destination);
-        @source.mediaElement.play();
+        @audio = new Audio()
+        @audio.src = @url
+        #@audioDiv.append @audio
+
+        @audio.addEventListener 'canplaythrough', do (track = @) ->
+          console.log 'audio can play through'
+          track.source = track.context.createMediaElementSource track.audio
+          track.source.connect track.context.destination
+          track.source.mediaElement.play()
+        ###
+        stream track.stream_url, (err, sound) ->
+          sound.play()
 
     ###
     Returns an object that can be retrieved when package is activated

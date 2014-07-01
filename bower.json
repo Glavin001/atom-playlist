@@ -1,0 +1,32 @@
+{
+  "name": "atom-playlist",
+  "version": "0.1.4",
+  "homepage": "https://github.com/dreid93/atom-playlist",
+  "authors": [
+    "Dawson Reid <dreid93@gmail.com>"
+  ],
+  "description": "Queue and play music directly from Atom.  (deep in development)",
+  "main": "lib/playlist.coffee",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "playlist",
+    "atom",
+    "soundcloud",
+    "music"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "bundle",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "fontawesome": "~4.1.0"
+  }
+}

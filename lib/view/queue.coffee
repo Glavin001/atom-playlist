@@ -60,7 +60,7 @@ module.exports =
     pushTrack: (track) ->
       console.log 'add track : ', track
       trackView = new TrackView track
-      console.log 'track view : ', trackView
+      #console.log 'track view : ', trackView
       @list.append trackView
 
     ### TODO: popTrack
