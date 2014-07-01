@@ -12,6 +12,9 @@ SearchView = require './view/search'
 
 module.exports =
 
+  configDefaults:
+    clientId: '072891b4ca0d6d02c31c2abb82bd3f63'
+
   ###
   Setup our logging framework. Here we are using winston.
 
@@ -49,6 +52,9 @@ module.exports =
 
     @queueView = new QueueView state
     @searchView = new SearchView state
+
+    atom.config.observe 'playlist.clientId', {}, (clientId) =>
+      console.log 'client id :', clientId
 
     return
 
