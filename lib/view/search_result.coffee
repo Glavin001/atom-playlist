@@ -15,8 +15,8 @@ module.exports =
       @li class: 'block', =>
         @div
           class: 'inline-block btn'
-          click: 'addTrack'
-          'Add'
+          click: 'addTrack', =>
+            @i class: 'fa fa-plus'
         @div
           class: 'inline-block'
           track.title

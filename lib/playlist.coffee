@@ -6,7 +6,9 @@
 #   https://atom.io/docs/latest/creating-a-package#source-code
 ###
 
+util = require 'util'
 winston = require 'winston'
+
 QueueView = require './view/queue'
 SearchView = require './view/search'
 
@@ -34,9 +36,18 @@ module.exports =
   ###
   setupCommands: ->
 
-    workspace = atom.workspaceView
-    workspace.command 'playlist:toggleQueue', => @toggleQueue()
-    workspace.command 'playlist:toggleSearch', => @toggleSearch()
+    wV = atom.workspaceView
+    wV.command 'playlist:toggleQueue', => @toggleQueue()
+    wV.command 'playlist:toggleSearch', => @toggleSearch()
+
+  ###
+  Include all of our needed source.
+  ###
+  require: ->
+
+    wV = atom.workspaceView
+    wV.append(util.format '<link rel="stylesheet" type="text/css" href="%s">',
+      'atom://fontawesome/css/font-awesome.min.css')
 
   ###
   # This required method is called when your package is activated. It is passed
@@ -47,6 +58,7 @@ module.exports =
   activate: (state) ->
     console.log 'activate ', state
 
+    @require()
     @setupLogging()
     @setupCommands()
 

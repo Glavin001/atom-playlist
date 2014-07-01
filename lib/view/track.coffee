@@ -7,7 +7,6 @@ authors :
 {View} = require 'atom'
 
 util = require 'util'
-stream = require('soundcloud-stream')(atom.config.get 'playlist.clientId')
 
 module.exports =
   class TrackView extends View
