@@ -8,6 +8,8 @@ authors :
 http = require 'http'
 util = require 'util'
 
+SearchResultView = require './search_result'
+
 module.exports =
   class SearchView extends View
 
@@ -25,10 +27,9 @@ module.exports =
           outlet: 'searchInput'
           keyUp: 'search' # call the search method
           autofocus: true
-        @ol class: 'list-group', =>
-          @ul
-            class: 'event'
-            'One'
+        @ol
+          dthclass: 'list-group'
+          outlet: 'searchResults'
 
     ###
     Query Soundcloud for the supplied query string.
@@ -55,8 +56,11 @@ module.exports =
     ###
     ###
     loadResultsList: (results) ->
-      console.log results
+      #console.log results
+      @searchResults.empty()
       for result in results
+        searchResult = new SearchResultView result
+        @searchResults.append searchResult
 
     initialize: (state) ->
       console.log 'SearchView.initialize'
