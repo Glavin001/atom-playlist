@@ -12,17 +12,6 @@ module.exports =
   class SearchView extends View
 
     @content: ->
-      ###
-      @div class: 'overlay from-top insert-panel', =>
-        @div
-          class: 'panel-heading'
-          'Search for a track :D'
-        @div class: 'panel-body padding', =>
-          @div class: 'block', =>
-            @div
-              class: 'editor mini editor-colors'
-              'Search for a track!'
-      ###
       @div class: 'select-list overlay from-top is-focused', =>
         @div
           class: 'panel-heading'
@@ -35,6 +24,7 @@ module.exports =
           value: ''
           outlet: 'searchInput'
           keyUp: 'search' # call the search method
+          autofocus: true
         @ol class: 'list-group', =>
           @ul
             class: 'event'
@@ -51,13 +41,22 @@ module.exports =
       console.log 'search uri : ', queryString
 
       # search soundcloud
-      http.get queryString, (resp) ->
-        data = ''
-        resp.on 'data', (chunk) ->
-          #console.log 'chunk :', chunk
-          data += chunk.toString()
-        resp.on 'end', ->
-          console.log 'data :', data
+      http.get queryString, do (searchView = @) -> # this is coffee closure!!!
+        (resp) -> # the http.get callback
+          data = ''
+          resp.on 'data', (chunk) ->
+            #console.log 'chunk :', chunk
+            data += chunk.toString()
+          resp.on 'end', ->
+            #console.log 'data :', data
+            results = JSON.parse data
+            searchView.loadResultsList results
+
+    ###
+    ###
+    loadResultsList: (results) ->
+      console.log results
+      for result in results
 
     initialize: (state) ->
       console.log 'SearchView.initialize'
