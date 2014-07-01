@@ -8,6 +8,7 @@
 
 winston = require 'winston'
 QueueView = require './view/queue'
+SearchView = require './view/search'
 
 module.exports =
 
@@ -25,12 +26,6 @@ module.exports =
     console.log logger
     logger.info 'Setup Winston logger.'
 
-  initQueueView: (state) ->
-    console.log 'initQueueView'
-    @queueView = new QueueView state
-
-    return
-
   ###
   Setup package commands.
   ###
@@ -38,6 +33,7 @@ module.exports =
 
     workspace = atom.workspaceView
     workspace.command 'playlist:toggleQueue', => @toggleQueue()
+    workspace.command 'playlist:toggleSearch', => @toggleSearch()
 
   ###
   # This required method is called when your package is activated. It is passed
@@ -50,7 +46,10 @@ module.exports =
 
     @setupLogging()
     @setupCommands()
-    @initQueueView state
+
+    @queueView = new QueueView state
+    @searchView = new SearchView state
+
     return
 
   ###
@@ -78,3 +77,7 @@ module.exports =
   toggleQueue: ->
     console.log 'toggleQueue()'
     @queueView.toggle()
+
+  toggleSearch: ->
+    console.log 'toggleSearch()'
+    @searchView.toggle()
