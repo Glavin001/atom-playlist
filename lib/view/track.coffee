@@ -42,8 +42,8 @@ module.exports =
           track.source.connect track.context.destination
           track.source.mediaElement.play()
         ###
-        stream track.stream_url, (err, sound) ->
-          sound.play()
+        #stream track.stream_url, (err, sound) ->
+          #sound.play()
 
     ###
     Returns an object that can be retrieved when package is activated

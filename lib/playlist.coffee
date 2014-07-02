@@ -58,7 +58,7 @@ module.exports =
   activate: (state) ->
     console.log 'activate ', state
 
-    @require()
+    #@require()
     @setupLogging()
     @setupCommands()
 

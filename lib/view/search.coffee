@@ -34,7 +34,7 @@ module.exports =
     ###
     Query Soundcloud for the supplied query string.
     ###
-    search: () ->
+    search: ->
       console.log 'SearchView.search'
       queryString = util.format(
         "http://api.soundcloud.com/tracks.json?client_id=%s&q=\'%s\'",

@@ -22,7 +22,8 @@
   },
   "dependencies": {
     "winston": "~0.7.3",
-    "soundcloud-stream": "0.0.2"
+    "soundcloud-stream": "0.0.2",
+    "font-awesome": "~4.1.0"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
