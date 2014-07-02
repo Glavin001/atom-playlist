@@ -1,7 +1,7 @@
 {
   "name": "playlist",
   "main": "lib/playlist",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Queue and play music directly from Atom.  (deep in development)",
   "license": "MIT",
   "private": true,
