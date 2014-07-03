@@ -5,7 +5,6 @@ authors :
 ###
 
 {View} = require 'atom'
-TrackView = require './track'
 
 module.exports =
   class QueueView extends View
@@ -28,7 +27,7 @@ module.exports =
 
     initialize: (state) ->
       console.log 'QueueView.initialize'
-      @state = state
+      @state = {tracks: []}
       console.log 'state : ', @state
 
       if @state.tracks
@@ -57,11 +56,13 @@ module.exports =
       else
         atom.workspaceView.prependToTop @
 
+    ###
     pushTrack: (track) ->
       console.log 'add track : ', track
       trackView = new TrackView track
       #console.log 'track view : ', trackView
       @list.append trackView
+    ###
 
     ### TODO: popTrack
     Takes a track off of the front of the queue and returns the track's state.

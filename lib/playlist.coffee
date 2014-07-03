@@ -14,11 +14,13 @@ authors :
 
 # Models
 TrackProviders = require "./providers/"
-console.log TrackProviders
 Playlist = require "./models/playlist"
+
 # Views
 SearchView = require "./views/search_view"
 PlaylistView = require "./views/playlist_view"
+QueueView = require "./views/queue_view"
+
 # Utils
 util = require 'util'
 winston = require 'winston'
@@ -48,11 +50,9 @@ module.exports =
   ###
   setupCommands: ->
 
-    workspace = atom.workspaceView
-    # Playlist
-    workspace.command 'playlist:togglePlaylist', => @playlistView.toggle()
-    # Search
-    workspace.command 'playlist:toggleSearch', => @searchView.toggle()
+    wV = atom.workspaceView
+    wV.command 'playlist:toggleQueue', => @queueView.toggle()
+    wV.command 'playlist:toggleSearch', => @searchView.toggle()
 
   ###
   # This required method is called when your package is activated. It is passed
@@ -67,7 +67,8 @@ module.exports =
     @trackProviders = TrackProviders
     @searchView = new SearchView(@trackProviders)
     @playlist = new Playlist()
-    @playlistView = new PlaylistView(@playlist)
+    #@playlistView = new PlaylistView(@playlist)
+    @queueView = new QueueView()
 
     atom.config.observe 'playlist.clientId', {}, (clientId) ->
       console.log 'client id :', clientId
