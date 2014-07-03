@@ -1,7 +1,7 @@
 {
   "name": "playlist",
   "main": "lib/playlist",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Ultimate collaborative music player for Atom.",
   "license": "MIT",
   "private": true,
