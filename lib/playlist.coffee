@@ -18,7 +18,6 @@ Playlist = require "./models/playlist"
 
 # Views
 SearchView = require "./views/search_view"
-PlaylistView = require "./views/playlist_view"
 QueueView = require "./views/queue_view"
 
 # Utils
@@ -64,10 +63,10 @@ module.exports =
     console.log 'activate ', state
 
     @setupLogging()
+    
     @trackProviders = TrackProviders
     @searchView = new SearchView(@trackProviders)
     @playlist = new Playlist()
-    #@playlistView = new PlaylistView(@playlist)
     @queueView = new QueueView()
 
     atom.config.observe 'playlist.clientId', {}, (clientId) ->
