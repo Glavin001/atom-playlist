@@ -7,5 +7,5 @@ add = (pPath) ->
   providers.add(new provider())
 # Custom Providers
 add('./itunes')
-add('./soundcloud')
-add('./youtube')
+# add('./soundcloud')
+# add('./youtube')

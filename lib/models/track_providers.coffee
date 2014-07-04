@@ -27,18 +27,18 @@ module.exports =
       # Put all searcher functions in an array
       async.map(@providers,
         (provider, pcb) ->
-          console.log 'provider', provider
+          # console.log 'provider', provider
           pcb(null, (cb) ->
             provider.search query, cb
           )
         , (err, searchFuns) ->
-          console.log 'searchFuns', err, searchFuns
+          # console.log 'searchFuns', err, searchFuns
           # Search!
           async.parallel(searchFuns, (err, results) ->
-            console.log 'search results', err, results
+            # console.log 'search results', err, results
             # Flatten the results to a single array of tracks
             tracks = _.flatten(results)
-            console.log tracks
+            # console.log tracks
             callback?(err, tracks)
             )
         )

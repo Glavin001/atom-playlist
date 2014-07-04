@@ -1,6 +1,6 @@
 {
   "name": "playlist",
-  "main": "lib/playlist",
+  "main": "lib/index",
   "version": "0.1.6",
   "description": "Ultimate collaborative music player for Atom.",
   "license": "MIT",
@@ -29,7 +29,8 @@
     "lodash": "^2.4.1",
     "open": "0.0.5",
     "youtube-node": "^1.0.1",
-    "soundclouder": "^0.7.10"
+    "soundclouder": "^0.7.10",
+    "applescript": "^0.2.1"
   },
   "devDependencies": {
     "grunt": "~0.4.2",

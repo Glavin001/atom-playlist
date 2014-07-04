@@ -12,5 +12,5 @@
 ###
 
 '.workspace':
-  'cmd-alt-l': 'playlist:toggleQueue'
-  'cmd-alt-shift-l': 'playlist:toggleSearch'
+  'cmd-alt-l': 'playlist:toggle-playlist'
+  'cmd-alt-shift-l': 'playlist:toggle-search'

@@ -9,6 +9,7 @@ TrackProvider = require '../models/track_provider'
 
 module.exports =
   class TrackProvider extends TrackProvider
+    name: 'soundcloud'
     clientId: "9a793fcdbbe6e69c6043fe2780283af9"
     clientSecret: "5fb0ba150973d4e29fef57c33258a99f"
     constructor: () ->

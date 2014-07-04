@@ -14,7 +14,7 @@ Or Settings/Preferences ➔ Packages ➔ Search for `playlist`
 
 ## Features
 
-iTunes | SoundCloud | YouTube
+iTunes <br> (Working for Macs!) | SoundCloud <br> (Coming Soon) | YouTube <br> (Coming Soon)
 --- | --- | ---
 ![iTunes](http://media.tumblr.com/tumblr_mejhq2qZ411qgce3z.png) | ![SoundCloud](http://www.officialpsds.com/images/thumbs/Soundcloud-Logo-psd47614.png) | ![YouTube](http://img.talkandroid.com/uploads/2013/09/YouTube-Transparent-Logo.png)
 

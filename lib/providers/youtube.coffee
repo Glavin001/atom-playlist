@@ -11,6 +11,7 @@ TrackProvider = require '../models/track_provider'
 
 module.exports =
   class TrackProvider extends TrackProvider
+    name: 'youtube'
     search: (query, callback) ->
       if not query?
         return callback?(null, [])

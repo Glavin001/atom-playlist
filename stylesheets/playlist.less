@@ -1,0 +1,48 @@
+
+.pl-queue {
+  height: 173px;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  .current-track .track {
+    background-color: darkgray;
+  }
+  
+  ul {
+    .track {
+      div {
+        text-overflow:ellipsis;
+        overflow:hidden;
+        white-space:nowrap;
+      }
+    }
+  }
+}
+
+@pl-album-length: 100px;
+
+.pl-queue ul {
+  overflow-x: auto;
+  height: 150px;
+  // background-color: #ddd;
+  // color: green;
+  margin: 0;
+  padding-left: 10px;
+
+  li {
+    color: white;
+  }
+
+}
+
+li.pl-album {
+  margin: 20px;
+  color: black;
+  width: @pl-album-length;
+}
+
+div.pl-album {
+  height: @pl-album-length;
+  border-style: solid;
+  border-width: 2px;
+}
