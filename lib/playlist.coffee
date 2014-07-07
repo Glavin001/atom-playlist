@@ -6,16 +6,29 @@
 #   https://atom.io/docs/latest/creating-a-package#source-code
 ###
 
+###
+authors :
+ - Dawson Reid (dreid93@gmail.com)
+ - Glavin Wiechert (glavin.wiechert@gmail.com)
+###
+
+# Models
+TrackProviders = require "./providers/"
+Playlist = require "./models/playlist"
+
+# Views
+SearchView = require "./views/search_view"
+QueueView = require "./views/queue_view"
+
+# Utils
 util = require 'util'
 winston = require 'winston'
-
-QueueView = require './view/queue'
-SearchView = require './view/search'
 
 module.exports =
 
   configDefaults:
-    clientId: ''
+    soundCloudClientId: '9a793fcdbbe6e69c6043fe2780283af9'
+    soundCoudClientSecret: '5fb0ba150973d4e29fef57c33258a99f'
 
   ###
   Setup our logging framework. Here we are using winston.
@@ -37,17 +50,8 @@ module.exports =
   setupCommands: ->
 
     wV = atom.workspaceView
-    wV.command 'playlist:toggleQueue', => @toggleQueue()
-    wV.command 'playlist:toggleSearch', => @toggleSearch()
-
-  ###
-  Include all of our needed source.
-  ###
-  require: ->
-
-    wV = atom.workspaceView
-    wV.append(util.format '<link rel="stylesheet" type="text/css" href="%s">',
-      'atom://components/fontawesome/css/font-awesome.min.css')
+    wV.command 'playlist:toggleQueue', => @queueView.toggle()
+    wV.command 'playlist:toggleSearch', => @searchView.toggle()
 
   ###
   # This required method is called when your package is activated. It is passed
@@ -58,16 +62,17 @@ module.exports =
   activate: (state) ->
     console.log 'activate ', state
 
-    @require()
     @setupLogging()
-    @setupCommands()
-
-    @queueView = new QueueView state
-    @searchView = new SearchView state, @queueView
+    
+    @trackProviders = TrackProviders
+    @searchView = new SearchView(@trackProviders)
+    @playlist = new Playlist()
+    @queueView = new QueueView()
 
     atom.config.observe 'playlist.clientId', {}, (clientId) ->
       console.log 'client id :', clientId
 
+    @setupCommands()
     return
 
   ###
@@ -88,14 +93,3 @@ module.exports =
   deactivate: ->
     console.log 'deactivate()'
     @queueView.destroy()
-
-  ###
-  Toggle the queue.
-  ###
-  toggleQueue: ->
-    console.log 'toggleQueue()'
-    @queueView.toggle()
-
-  toggleSearch: ->
-    console.log 'toggleSearch()'
-    @searchView.toggle()

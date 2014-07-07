@@ -1,8 +1,8 @@
 {
   "name": "playlist",
   "main": "lib/playlist",
-  "version": "0.1.4",
-  "description": "Queue and play music directly from Atom.  (deep in development)",
+  "version": "0.1.7",
+  "description": "Ultimate collaborative music player for Atom.",
   "license": "MIT",
   "private": true,
   "repository": {
@@ -22,14 +22,20 @@
   },
   "dependencies": {
     "winston": "~0.7.3",
-    "soundcloud-stream": "0.0.2"
+    "soundcloud-stream": "0.0.2",
+    "font-awesome": "~4.1.0",
+    "bower": "~1.3.5",
+    "async": "^0.9.0",
+    "lodash": "^2.4.1",
+    "open": "0.0.5",
+    "youtube-node": "^1.0.1",
+    "soundclouder": "^0.7.10"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-coffeelint": "0.0.8",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-lesslint": "~1.0.0",
-    "grunt-apm": "0.0.1",
-    "bower": "~1.3.5"
+    "grunt-apm": "0.0.1"
   }
 }
