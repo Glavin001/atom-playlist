@@ -1,5 +1,7 @@
 # [Playlist](https://github.com/dreid93/atom-playlist)
 
+**Important: This package is currently not maintained.**
+
 > Ultimate (collaborative) music player package for the [Atom editor](https://atom.io/).
 
 ## Install
